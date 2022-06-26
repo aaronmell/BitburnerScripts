@@ -1,0 +1,28 @@
+{
+  "name": "bitburnerscripts",
+  "version": "0.0.1",
+  "description": "A collection of Scripts for the Bitburner Game",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -R ./dist",
+    "defs": "node ./updateDefs.js",
+    "lint": "eslint . --ext .ts",
+    "watch": "npx tsc -w"
+  },
+  "author": "Aaron Mell",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaronmell/BitburnerScripts"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.29.0",
+    "@typescript-eslint/parser": "^5.29.0",
+    "@types/lodash": "^4.14.182",
+    "@types/node": "^18.0.0",
+    "eslint": "^8.18.0",
+    "lodash": "^4.17.21",
+    "ts-node": "^10.8.1",
+    "typescript": "^4.7.4"
+  }
+}
