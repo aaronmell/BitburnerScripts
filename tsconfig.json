@@ -3,6 +3,7 @@
       "NetscriptDefinitions.d.ts",
       "global.d.ts",
       "src/**/*",
+      "tests"
     ],
     "compilerOptions": {
       "module": "esnext",
@@ -14,9 +15,9 @@
       "inlineSourceMap": true,
       "sourceRoot": "http://localhost:8000/sources/",
       "strict": true,
-      "rootDir": "src/",
+      "rootDir": "./",
       "outDir": "dist/",
-      "baseUrl": "src/",
+      "baseUrl": "./",
       "paths": {
         "/*": [
           "*"
@@ -25,5 +26,9 @@
           "../NetscriptDefinitions.d.ts"
         ]
       }
-    }
+    },
+    "exclude": [
+      "./dist",
+      "./node_modules/**/*"
+    ]
   }

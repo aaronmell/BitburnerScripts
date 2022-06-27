@@ -3,10 +3,12 @@
   "version": "0.0.1",
   "description": "A collection of Scripts for the Bitburner Game",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "clean": "rm -R ./dist",
     "defs": "node ./updateDefs.js",
     "lint": "eslint . --ext .ts",
+    "test": "ts-mocha -p ./tsconfig.json 'tests/**/*.ts'",
     "watch": "npx tsc -w"
   },
   "author": "Aaron Mell",
@@ -16,12 +18,19 @@
     "url": "git+https://github.com/aaronmell/BitburnerScripts"
   },
   "devDependencies": {
+    "@types/chai": "^4.3.1",
+    "@types/lodash": "^4.14.182",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.29.0",
     "@typescript-eslint/parser": "^5.29.0",
-    "@types/lodash": "^4.14.182",
-    "@types/node": "^18.0.0",
+    "chai": "^4.3.6",
     "eslint": "^8.18.0",
+    "eslint-plugin-mocha": "^10.0.5",
     "lodash": "^4.17.21",
+    "mocha": "^10.0.0",
+    "testdouble": "^3.16.6",
+    "ts-mocha": "^10.0.0",
     "ts-node": "^10.8.1",
     "typescript": "^4.7.4"
   }

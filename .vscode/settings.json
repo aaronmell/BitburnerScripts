@@ -1,6 +1,6 @@
 {
     // Linter Settings
-    "typescript.validate.enable": false,
+    "typescript.validate.enable": true,
     "javascript.validate.enable": false,
     "eslint.validate": ["typescript", "typescriptreact"],
     "eslint.workingDirectories": ["./src"],
@@ -15,4 +15,12 @@
 
     // Autosave Settings
     "files.autoSave": "off",
+    // "mochaExplorer.configFile":".mocharc.json",
+    // "mochaExplorer.nodeArgv": [
+    //   "--experimental-specifier-resolution=node", "--loader=ts-node/esm"
+    // ],
+
+    // "mochaExplorer.require": [
+    //   "ts-node/register",
+    // ]
 }
