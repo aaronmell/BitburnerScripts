@@ -1,0 +1,3 @@
+{
+    "runResourceMonitor": "true"
+}
