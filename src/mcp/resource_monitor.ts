@@ -1,4 +1,6 @@
-import { getAdminServers } from "shared";
+import { getRollingResourceFilename } from "/mcp/constants";
+import { RollingResource } from "/mcp/interfaces";
+import { getAdminServers } from "/mcp/utils";
 
 /** @param {NS} ns */
 export async function main(ns: NS) {
@@ -36,7 +38,7 @@ export async function main(ns: NS) {
             avgFree.toFixed(2)
         );
 
-        if (rollingFree.length % 10 === 0) {
+        if (rollingFree.length % 60 === 0) {
             let maxSum = 0;
             rollingMax.forEach((x) => (maxSum += x));
             const maxAvg = maxSum / rollingMax.length + 1;
@@ -45,21 +47,32 @@ export async function main(ns: NS) {
             rollingInUse.forEach((x) => (useSum += x));
             const useAvg = useSum / rollingInUse.length + 1;
 
-            let freeSum = 0;
-            rollingFree.forEach((x) => (freeSum += x));
-            const freeAvg = freeSum / rollingFree.length + 1;
+            const freeLow = Math.min(...rollingFree);
 
             ns.printf(
-                "Rolling Max Avg %s In Use Avg %s Free Avg %s Free Per %s",
+                "Rolling Max Avg %s In Use Avg %s Free Avg %s Free Low %s",
                 maxAvg.toFixed(2),
                 useAvg.toFixed(2),
-                freeAvg.toFixed(2),
-                (freeAvg / maxAvg).toFixed(2)
+                freeLow.toFixed(2),
+                (freeLow / maxAvg).toFixed(2)
             );
 
             rollingMax.length = 0;
             rollingInUse.length = 0;
             rollingFree.length = 0;
+
+            const output = {
+                rollingMax: maxAvg,
+                rollingInUse: useAvg,
+                rollingFree: freeLow,
+                freePercentage: freeLow / maxAvg,
+            } as RollingResource;
+
+            await ns.write(
+                getRollingResourceFilename(),
+                JSON.stringify(output),
+                "w"
+            );
         }
 
         await ns.sleep(1000);

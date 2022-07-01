@@ -1,3 +1,4 @@
 {
-    "runResourceMonitor": "true"
+    "runResourceMonitor": "true",
+    "stealThresholdPercent": .75,
 }

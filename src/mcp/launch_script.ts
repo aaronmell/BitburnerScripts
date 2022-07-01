@@ -1,4 +1,4 @@
-import { RunParameters } from "mcp/intefaces";
+import { RunParameters } from "/mcp/interfaces";
 
 /** @param {NS} ns */
 export async function main(ns: NS) {
@@ -23,7 +23,6 @@ export async function main(ns: NS) {
         runParameters.scriptName,
         runParameters.targetServer,
         runParameters.threads,
-        runParameters.targetServer,
         ...runParameters.args
     );
 }
